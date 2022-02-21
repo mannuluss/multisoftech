@@ -9,6 +9,7 @@ import { InicioUsuarioComponent } from './inicio-usuario/inicio-usuario.componen
 import { InicioTecnicoComponent } from './inicio-tecnico/inicio-tecnico.component';
 import { RegistroEquipoComponent } from './registro-equipo/registro-equipo.component';
 import { SolicitudEquipoComponent } from './solicitud-equipo/solicitud-equipo.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SolicitudEquipoComponent } from './solicitud-equipo/solicitud-equipo.co
     InicioUsuarioComponent,
     InicioTecnicoComponent,
     RegistroEquipoComponent,
-    SolicitudEquipoComponent
+    SolicitudEquipoComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
