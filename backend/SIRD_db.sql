@@ -23,19 +23,38 @@ CREATE TABLE IF NOT EXISTS `acciones` (
   `precio` float NOT NULL,
   `descripcion` varchar(250) NOT NULL,
   PRIMARY KEY (`id_acciones`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla sird_db.acciones: ~4 rows (aproximadamente)
+/*!40000 ALTER TABLE `acciones` DISABLE KEYS */;
+INSERT IGNORE INTO `acciones` (`id_acciones`, `precio`, `descripcion`) VALUES
+	(1, 25000, 'Mantenimientos general sin cambio de pasta termica'),
+	(2, 35000, 'Mantenimiento general con cambio de pasta termica'),
+	(3, 35000, 'Formateo sensillo'),
+	(4, 75000, 'Mantenimineto y formateo');
+/*!40000 ALTER TABLE `acciones` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sird_db.cliente
 CREATE TABLE IF NOT EXISTS `cliente` (
   `id_cliente` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(250) NOT NULL,
+  `apellido` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
-  `contrasena` varbinary(250) NOT NULL,
+  `contrasena` varchar(100) DEFAULT '',
   PRIMARY KEY (`id_cliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla sird_db.cliente: ~7 rows (aproximadamente)
+/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT IGNORE INTO `cliente` (`id_cliente`, `nombre`, `apellido`, `email`, `contrasena`) VALUES
+	(1, 'Juan', 'Torres', 'jtorres@gmail.com', ''),
+	(2, 'Horacio', 'Camacho', 'horus@hotmail.com', ''),
+	(3, 'Andres', 'Felipe', 'mannulus@gmail.com', ''),
+	(4, 'Diego', 'Landines', 'gatitacaliente123@gmail.com', ''),
+	(5, 'Valentina', 'Escobar', 'nenitq@gmail.com', ''),
+	(6, 'Eduardo', 'Gonzales', 'degosan00@gmail.com', ''),
+	(7, 'Daniel', 'Leon', 'danle@gmail.com', '');
+/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sird_db.destallesacciones
 CREATE TABLE IF NOT EXISTS `destallesacciones` (
@@ -47,7 +66,9 @@ CREATE TABLE IF NOT EXISTS `destallesacciones` (
   CONSTRAINT `destallesacciones_ibfk_2` FOREIGN KEY (`id_detalles`) REFERENCES `detalles` (`id_detalle`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla sird_db.destallesacciones: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `destallesacciones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `destallesacciones` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sird_db.detalles
 CREATE TABLE IF NOT EXISTS `detalles` (
@@ -59,7 +80,9 @@ CREATE TABLE IF NOT EXISTS `detalles` (
   CONSTRAINT `detalles_ibfk_1` FOREIGN KEY (`id_dispositivo`) REFERENCES `dispositivo` (`numero_serie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla sird_db.detalles: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `detalles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `detalles` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sird_db.dispositivo
 CREATE TABLE IF NOT EXISTS `dispositivo` (
@@ -74,7 +97,9 @@ CREATE TABLE IF NOT EXISTS `dispositivo` (
   CONSTRAINT `dispositivo_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla sird_db.dispositivo: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `dispositivo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `dispositivo` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sird_db.personal
 CREATE TABLE IF NOT EXISTS `personal` (
@@ -87,7 +112,9 @@ CREATE TABLE IF NOT EXISTS `personal` (
   CONSTRAINT `personal_ibfk_1` FOREIGN KEY (`id_encargado`) REFERENCES `personal` (`id_personal`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla sird_db.personal: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `personal` DISABLE KEYS */;
+/*!40000 ALTER TABLE `personal` ENABLE KEYS */;
 
 -- Volcando estructura para tabla sird_db.solicitud
 CREATE TABLE IF NOT EXISTS `solicitud` (
@@ -106,7 +133,9 @@ CREATE TABLE IF NOT EXISTS `solicitud` (
   CONSTRAINT `solicitud_ibfk_3` FOREIGN KEY (`id_tecnico`) REFERENCES `personal` (`id_personal`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- La exportación de datos fue deseleccionada.
+-- Volcando datos para la tabla sird_db.solicitud: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `solicitud` DISABLE KEYS */;
+/*!40000 ALTER TABLE `solicitud` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
