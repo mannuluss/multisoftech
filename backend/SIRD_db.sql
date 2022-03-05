@@ -40,20 +40,20 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `nombre` varchar(250) NOT NULL,
   `apellido` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
-  `contrasena` varchar(100) DEFAULT '',
+  `contrasena` varchar(100) NOT NULL,
   PRIMARY KEY (`id_cliente`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla sird_db.cliente: ~7 rows (aproximadamente)
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
 INSERT INTO `cliente` (`id_cliente`, `nombre`, `apellido`, `email`, `contrasena`) VALUES
-	(1, 'Juan', 'Torres', 'jtorres@gmail.com', ''),
-	(2, 'Horacio', 'Camacho', 'horus@hotmail.com', ''),
-	(3, 'Andres', 'Felipe', 'mannulus@gmail.com', ''),
-	(4, 'Diego', 'Landines', 'gatitacaliente123@gmail.com', ''),
-	(5, 'Valentina', 'Escobar', 'nenitq@gmail.com', ''),
-	(6, 'Eduardo', 'Gonzales', 'degosan00@gmail.com', ''),
-	(7, 'Daniel', 'Leon', 'danle@gmail.com', '');
+	(1, 'Juan', 'Torres', 'jtorres@gmail.com', '$12$1H854bNIdoJgIATNUytbyOSAFPRHTPMetDNrIJIAGk5l9wtXib8cW'),
+	(2, 'Horacio', 'Camacho', 'horus@hotmail.com', '$12$1H854bNIdoJgIATNUytbyOSAFPRHTPMetDNrIJIAGk5l9wtXib8cW'),
+	(3, 'Andres', 'Felipe', 'mannulus@gmail.com', '$12$1H854bNIdoJgIATNUytbyOSAFPRHTPMetDNrIJIAGk5l9wtXib8cW'),
+	(4, 'Diego', 'Landines', 'gatitacaliente123@gmail.com', '$12$1H854bNIdoJgIATNUytbyOSAFPRHTPMetDNrIJIAGk5l9wtXib8cW'),
+	(5, 'Valentina', 'Escobar', 'nenitq@gmail.com', '$12$1H854bNIdoJgIATNUytbyOSAFPRHTPMetDNrIJIAGk5l9wtXib8cW'),
+	(6, 'Eduardo', 'Gonzales', 'degosan00@gmail.com', '$12$1H854bNIdoJgIATNUytbyOSAFPRHTPMetDNrIJIAGk5l9wtXib8cW'),
+	(7, 'Daniel', 'Leon', 'danle@gmail.com', '$12$1H854bNIdoJgIATNUytbyOSAFPRHTPMetDNrIJIAGk5l9wtXib8cW');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 
 
