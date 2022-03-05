@@ -1,6 +1,16 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
 const connectionMYSQL = require('./mysqlconfig');
+const bcrypt = require("bcrypt")
+
+
+function encryptPassword(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(12));
+};
+
+function comparePassword(tocomparte, password) {
+    return bcrypt.compareSync(tocomparte, password);
+};
 
 function verify(req, username, password, cb) {
     /*db.get('SELECT rowid AS id, * FROM users WHERE username = ?', [username], function (err, row) {
@@ -18,6 +28,7 @@ function verify(req, username, password, cb) {
 
     /*connectionMYSQL.query("CALL login(?,?)", [req.body.username, req.body.password], (err, result) => {
         if (err) return cb(err);
+        comparePassword(password, result[0].password)
         else return cb(null, result[0]);
     })*/
     console.log("verify ", req.body);
@@ -37,3 +48,4 @@ passport.deserializeUser(function (user, cb) {
 });
 
 module.exports = passport;
+module.exports.encryptPassword = encryptPassword;
