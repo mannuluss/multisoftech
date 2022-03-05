@@ -5,16 +5,8 @@
 -- HeidiSQL Versión:             11.3.0.6295
 -- --------------------------------------------------------
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
-
 -- Volcando estructura de base de datos para sird_db
-CREATE DATABASE IF NOT EXISTS `sird_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE IF NOT EXISTS `sird_db`;
 USE `sird_db`;
 
 -- Volcando estructura para tabla sird_db.acciones
@@ -31,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `acciones` (
 CREATE TABLE IF NOT EXISTS `cliente` (
   `id_cliente` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(250) NOT NULL,
-  `contrasena` varbinary(250) NOT NULL,
+  `contrasena` varchar(250) NOT NULL,
   PRIMARY KEY (`id_cliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -47,21 +39,6 @@ CREATE TABLE IF NOT EXISTS `destallesacciones` (
   CONSTRAINT `destallesacciones_ibfk_2` FOREIGN KEY (`id_detalles`) REFERENCES `detalles` (`id_detalle`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla sird_db.detalles
-CREATE TABLE IF NOT EXISTS `detalles` (
-  `id_detalle` int(11) NOT NULL AUTO_INCREMENT,
-  `id_dispositivo` int(11) NOT NULL,
-  `descripcion` varchar(250) NOT NULL,
-  PRIMARY KEY (`id_detalle`),
-  KEY `id_dispositivo` (`id_dispositivo`),
-  CONSTRAINT `detalles_ibfk_1` FOREIGN KEY (`id_dispositivo`) REFERENCES `dispositivo` (`numero_serie`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- La exportación de datos fue deseleccionada.
-
--- Volcando estructura para tabla sird_db.dispositivo
 CREATE TABLE IF NOT EXISTS `dispositivo` (
   `numero_serie` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
@@ -74,7 +51,14 @@ CREATE TABLE IF NOT EXISTS `dispositivo` (
   CONSTRAINT `dispositivo_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- La exportación de datos fue deseleccionada.
+CREATE TABLE IF NOT EXISTS `detalles` (
+  `id_detalle` int(11) NOT NULL AUTO_INCREMENT,
+  `id_dispositivo` int(11) NOT NULL,
+  `descripcion` varchar(250) NOT NULL,
+  PRIMARY KEY (`id_detalle`),
+  KEY `id_dispositivo` (`id_dispositivo`),
+  CONSTRAINT `detalles_ibfk_1` FOREIGN KEY (`id_dispositivo`) REFERENCES `dispositivo` (`numero_serie`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando estructura para tabla sird_db.personal
 CREATE TABLE IF NOT EXISTS `personal` (
@@ -106,9 +90,4 @@ CREATE TABLE IF NOT EXISTS `solicitud` (
   CONSTRAINT `solicitud_ibfk_3` FOREIGN KEY (`id_tecnico`) REFERENCES `personal` (`id_personal`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- La exportación de datos fue deseleccionada.
-
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
+INSERT INTO cliente (email,contrasena) VALUES ("felipe","$12$1H854bNIdoJgIATNUytbyOSAFPRHTPMetDNrIJIAGk5l9wtXib8cW");

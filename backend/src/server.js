@@ -6,7 +6,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
-var authpassport = require("./src/auth")
+var authpassport = require("./auth")
 
 var app = express();
 
@@ -19,14 +19,14 @@ app.use(cookieParser());
 app.use(authpassport.initialize())
 //app.use(authpassport.session())
 
-app.use('public', express.static(path.join(__dirname, './public')));
-app.use(express.static(path.join(__dirname, './views')));
+app.use('public', express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../views')));
 
 
 //Rutas de la API
-var usersRouter = require('./routes/users');
-var apiRouter = require("./routes/api");
-var tenicoRouter = require("./routes/tecnico")
+var usersRouter = require('../routes/users');
+var apiRouter = require("../routes/api");
+var tenicoRouter = require("../routes/tecnico")
 
 app.use('/api', apiRouter);
 app.use('/api/users', usersRouter);
@@ -34,7 +34,7 @@ app.use('/api/tecnico', tenicoRouter);
 
 //configurando rutas del servidor web
 app.get(["/tecnico", "/usuario", "/ususario/*"], (req, res) => {
-    res.sendFile(path.join(__dirname, "./views/index.html"));
+    res.sendFile(path.join(__dirname, "../views/index.html"));
 });
 
 //iniciando servicio
