@@ -1,0 +1,8 @@
+especificaciones: "marcaCPU_referencia_memoriaRAM_alamacenamientoHDD_alacenamientoSSD_marcaGPU_referenciaGPU_capacidadGPU"
+"INTEL_i7_7700T_8_1TB_256GB_NVIDIA_GTX1650SUPER_8GB"
+tipo dispositivo:
+"LAPTOP" "PERSONAL COMPUTERS" "MINICOPUTER" "ALL IN ONE"
+Tipo personal:
+"TECNICO" "RECEPCIONISTA"
+
+
