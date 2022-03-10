@@ -1,14 +1,16 @@
 var { Router } = require('express');
 var connectionMYSQL = require("../src/mysqlconfig")
+const { encryptPassword } = require("../src/auth")
 var router = Router();
 
 //creacion de usuario
-router.get('/createuser', function (req, res, next) {
-    var params = req.query;
-    connectionMYSQL.query(`CALL Login(${params.user},${params.password})`, function (err, result) {
+router.post('/crearPersonal', function (req, res, next) {
+    var pwd = encryptPassword(req.body.password);
+    var paramsquery = `"${req.body.name}","${req.body.surname}","${req.body.email}","${pwd}"`;
+    /*connectionMYSQL.query(`CALL crearCliente(${paramsquery})`, function (err, result) {
         if (err) throw err;
         res.send(result)
-    });
+    });*/
 });
 
 //solicitudes que hay y el tenico encargado

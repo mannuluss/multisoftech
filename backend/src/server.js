@@ -27,8 +27,10 @@ app.use(express.static(path.join(__dirname, '../views')));
 var usersRouter = require('../routes/users');
 var apiRouter = require("../routes/api");
 var tenicoRouter = require("../routes/tecnico")
+var adminRouter = require("../routes/admin")
 
 app.use('/api', apiRouter);
+app.use('/api/admin', adminRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/tecnico', tenicoRouter);
 

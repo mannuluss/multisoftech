@@ -6,20 +6,34 @@ const url = require('url');
 const { encryptPassword } = require('../src/auth');
 
 
-/*router.get('/login', function (req, res, next) {
-    var params = req.query;
-    connectionMYSQL.query(`CALL Login(${params.user},${params.password})`, function (err, result) {
+//crear dispositivo en la lista de dispositivos
+router.post('/createDispositivo', function (req, res, next) {
+    var paramsproperty = `${req.body.nserie},${req.body.idcliente},"${req.body.specs}","${req.body.tipo_device}","${req.body.ref}","${req.body.maker}"`;
+    connectionMYSQL.query(`CALL crearDispositivo(${paramsproperty})`, function (err, result) {
         if (err) throw err;
-        //res.send(result)
+        res.send(result)
     });
-});*/
+});
+
+//crear solicitud
+router.post('/createSolicitud', function (req, res, next) {
+    //consulta de los tecnicos para asignar al primero que este desocupado o tenga menos cosas por hacer
+    var idtecnico = 1
+    //connectionMYSQL.ParamsProcedure(req.body, ["state","idcliente", "iddetalle", "idtecnico", "date"])
+    var paramsproperty = `"${req.body.state}","${req.body.idcliente}","${req.body.iddetalle}","${idtecnico}"`;
+    connectionMYSQL.query(`CALL crearSolicitud(${paramsproperty})`, function (err, result) {
+        if (err) throw err;
+        res.send(result)
+    });
+});
 
 //login
-//parametros de la query {username, password}
+//parametros de la query {email, password}
 router.post('/login', function (req, res, done) {
-    passport.authenticate('local', {/*successReturnToOrRedirect: '/',*/failureRedirect: '/login', failureMessage: true },
+    passport.authenticate('local', { failureRedirect: '/login', failureMessage: true },
         function (err, user, info) {
-            console.log("post send ", user)
+            if (err) console.log(err)
+            //console.log("post send ", user)
             res.send(user);
             //res.send(user).redirect('/tecnico');
             //res.redirect(url.format({ pathname: user.role == "admin" ? "/tecnico" : "/usuario", query: user }));
@@ -28,13 +42,13 @@ router.post('/login', function (req, res, done) {
 
 router.post('/signup', (req, res) => {
     let password = encryptPassword(req.body.password)
-    connectionMYSQL.query(`INSERT INTO cliente (email,contrasena) VALUES ("${req.body.email}","${password}");`, function (err, result) {
+    var pwd = encryptPassword(req.body.password);
+    var paramsquery = `"${req.body.name}","${req.body.surname}","${req.body.email}","${pwd}"`;
+    connectionMYSQL.query(`CALL crearCliente(${paramsquery})`, function (err, result) {
         res.send({ err: err, result: result });
-});
+    });
 });
 
-/* POST /logout
-*/
 router.post('/logout', function (req, res, next) {
     //req.logout();
     res.redirect('/');
