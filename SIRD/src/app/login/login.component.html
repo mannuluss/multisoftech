@@ -1,10 +1,25 @@
-<p>login works!</p>
-
-<div class="login">
-	<h1>Login</h1>
-    <form [formGroup]="formulario" (ngSubmit)="sendlogin()">
-    	<input type="text" formControlName="username" name="u" placeholder="Username" required="required" />
-        <input type="password" formControlName="password" name="p" placeholder="Password" required="required" />
-        <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
-    </form>
-</div>
+<section>
+    <div class="imgTec">
+        <img src="../resources/temp.jpg" alt="img">
+    </div>
+    <div class="contenido">
+        <div class="formulario">
+            <h2>Login</h2>
+            <img src="../resources/logo.png" alt="logo">
+            <form action="">
+                <div class="formbox">
+                    <input type="text" placeholder="Usuario">
+                </div>
+                <div class="formbox">
+                    <input type="text" placeholder="Contraseña">
+                </div>
+                <div class="formbox">
+                    <input class="boton" type="submit" value="Ingresar">
+                </div>
+                <div class="formbox">
+                    <a href="#">¿Has olvidado tu contraseña?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
