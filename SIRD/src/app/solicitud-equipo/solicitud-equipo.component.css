@@ -72,6 +72,7 @@
     font-weight: 500;
     border: 1px solid #37B09E;
     resize: none;
+    font-size: 18px;  
 }
 
 .boxform form .page .campo input{
