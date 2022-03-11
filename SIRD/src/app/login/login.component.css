@@ -20,9 +20,14 @@
 section{
   position: relative;
   width: 100%;
+<<<<<<< HEAD
   height: 100%;
   display: flex;
   align-items: center;
+=======
+  height: 100vh;
+  display: flex;
+>>>>>>> front-design
 }
 
 section .imgTec{
@@ -65,12 +70,19 @@ section .contenido .formulario{
 }
 
 section .contenido .formulario img{
+<<<<<<< HEAD
   width: 100%;
   margin-bottom: 20px;  
 }
 
 section .contenido .formulario .formbox{
   margin-top: 20px;
+=======
+
+}
+
+section .contenido .formulario .formbox{
+>>>>>>> front-design
   margin-bottom: 20px;  
 }
 
@@ -88,8 +100,11 @@ section .contenido .formulario .formbox input{
 }
 
 section .contenido .formulario .formbox .boton{
+<<<<<<< HEAD
   margin-top: 10px;
   margin-bottom: 10px;
+=======
+>>>>>>> front-design
   border-radius: 30px;
   border: 3px solid #37B09E;
   color: #37B09E;
