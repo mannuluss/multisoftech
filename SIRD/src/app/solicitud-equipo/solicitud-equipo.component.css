@@ -1,0 +1,175 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #7AF5D6;
+}
+
+.contenedor{
+    width: 330px;
+    background: white;
+    border-radius: 30px;
+    text-align: center;
+    padding: 50px 35px 10px 35px;
+}
+
+.contenedor .boxform{
+    width: 100%;
+    overflow: hidden;
+}
+
+.boxform form{
+    display: flex;
+    width: 400%;
+}
+
+.boxform form .page{
+    width: 25%;
+}
+
+.boxform form .page .titulo{
+    text-align: left;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.boxform form .page .campo{
+    height: 30px;
+    width: 330px;
+    margin: 35px 0;
+    position: relative;
+}
+
+.boxform form .page .campo label{
+    position: absolute;
+    top: -30px;
+    font-weight: 500;
+}
+
+.boxform form .page .campo textarea{
+    position: absolute;
+    height: 100px;
+    width: 100%;
+    font-weight: 500;
+    border: 1px solid #37B09E;
+    resize: none;
+}
+
+.boxform form .page .campo input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #37B09E;   
+    font-size: 18px;  
+}
+
+.boxform form .page .campo button{
+    width: 100%;
+    height: 40px;
+    border-radius: 30px;
+    background: white;
+    border: 4px solid #37B09E;
+    font-size: 16px;
+    color: #37B09E;
+}
+
+.boxform form .page .campo button:hover{
+    background: #64DEB3;
+    border: 3px solid #37B09E;
+    color: white;
+}
+
+.contenedor .progress-bar{
+    display: flex;
+    margin: 40px 0;
+    user-select: none;
+  }
+
+  .contenedor .progress-bar .step{
+    text-align: center;
+    width: 100%;
+    position: relative;
+  }
+
+  .contenedor .progress-bar .step p{
+    font-weight: 500;
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 8px;
+  }
+
+  .progress-bar .step .bullet{
+    height: 60px;
+    width: 60px;
+    border: 2px solid #000;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    transition: 0.2s;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 25px;
+  }
+
+  .progress-bar .step .bullet.active{
+    border-color: #d43f8d;
+    background: #d43f8d;
+  }
+  .progress-bar .step .bullet span{
+    position: absolute;
+    left: 50%;
+    top: 15px;
+    transform: translateX(-50%);
+  }
+  .progress-bar .step .bullet.active span{
+    display: none;
+  }
+  .progress-bar .step .bullet:before,
+  .progress-bar .step .bullet:after{
+    position: absolute;
+    content: '';
+    bottom: 30px;
+    right: -103px;
+    height: 3px;
+    width: 100px;
+    background: black;
+  }
+  .progress-bar .step .bullet.active:after{
+    background: #d43f8d;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: animate 0.3s linear forwards;
+  }
+  @keyframes animate {
+    100%{
+      transform: scaleX(1);
+    }
+  }
+  .progress-bar .step:last-child .bullet:before,
+  .progress-bar .step:last-child .bullet:after{
+    display: none;
+  }
+  .progress-bar .step p.active{
+    color: #d43f8d;
+    transition: 0.2s linear;
+  }
+  .progress-bar .step .check{
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    font-size: 15px;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+  .progress-bar .step .check.active{
+    display: block;
+    color: #fff;
+  }
