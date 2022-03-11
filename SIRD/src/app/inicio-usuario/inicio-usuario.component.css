@@ -28,10 +28,11 @@
 .contenedor .busqueda input{
     height: 30px;
     width: 300px;
+    font-size: 16px;
     border: 2px solid #37B09E;
     border-radius: 20px;
     padding: 5px;
-    padding-left: 7px;
+    padding-left: 10px;
 }
 
 .contenedor .busqueda button{

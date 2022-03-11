@@ -2,17 +2,15 @@
     <div class="contenedor">
         <div class="boxform">
             <form action="">
-                <div class="page">
+                <div class="page page1" *ngIf="m1">
                     <div class="progress-bar">
                         <div class="step">
-                           <p>Paso1</p>
                            <div class="bullet">
                               <span>Icon1</span>
                            </div>
                            <div class="check fas fa-check"></div>
                         </div>
                         <div class="step">
-                           <p>Paso2</p>
                            <div class="bullet">
                               <span>Icon2</span>
                            </div>
@@ -33,38 +31,63 @@
                         <input type="text" placeholder="Dirección">
                     </div>
                     <div class="campo">
-                        <button class="next-0">Siguiente</button>
+                        <button class="btn" (click)="siguiente1()">Siguiente</button>
                     </div>
                     <div class="campo">
-                        <a href="#" class="cancelar">Cancelar</a>
+                        <a href="#" (click)="cancelar()">Cancelar</a>
                     </div>
                 </div>
     
-                <div class="page">
+                <div class="page page2" *ngIf="m2">
+                    <div class="progress-bar">
+                        <div class="step">
+                           <div class="bullet">
+                              <span>Icon1</span>
+                           </div>
+                           <div class="check fas fa-check"></div>
+                        </div>
+                        <div class="step">
+                           <div class="bullet">
+                              <span>Icon2</span>
+                           </div>
+                           <div class="check fas fa-check"></div>
+                        </div>                        
+                     </div>
                     <label class="titulo">Informacion del Usuario</label>
                     <div class="campo">
                         <label for="">Fecha de solicitud</label>
                         <input type="date" class="date">
                     </div>
-                    <div class="campo">
-                        <label for="">Captura del equipo</label>
-                        <input type="file">
+                    <div class="campo archivo">
+                        <input type="file" value="">
                     </div>
                     <div class="campo">
                         <label for="">Descripción</label>
-                    </div>
-                    <div class="campo">
                         <textarea name="descripcion" id="desc" cols="30" rows="10"></textarea>
                     </div>
                     <div class="campo">
-                        <button class="next-1">Siguiente</button>
+                        <button class="next-1" (click)="siguiente2()">Siguiente</button>
                     </div>
                     <div class="campo">
-                        <a href="#" class="prev-1">Volver</a>
+                        <a href="#" class="prev-1" (click)="atras1()">Volver</a>
                     </div>
                 </div>
     
-                <div class="page">
+                <div class="page page3" *ngIf="m3">
+                    <div class="progress-bar">
+                        <div class="step">
+                           <div class="bullet">
+                              <span>Icon1</span>
+                           </div>
+                           <div class="check fas fa-check"></div>
+                        </div>
+                        <div class="step">
+                           <div class="bullet">
+                              <span>Icon2</span>
+                           </div>
+                           <div class="check fas fa-check"></div>
+                        </div>                        
+                     </div>
                     <label class="titulo">Especificaciones Tecnicas</label>
                     <div class="campo">
                         <input type="text" placeholder="Marca">
@@ -77,15 +100,13 @@
                     </div>
                     <div class="campo">
                         <label for="">Especificaciones del equipo</label>
-                    </div>
-                    <div class="campo">
                         <textarea name="especificaciones" id="esp" cols="30" rows="10"></textarea>
                     </div>
                     <div class="campo">
-                        <button class="next-2">Finalizar</button>
+                        <button class="submit">Finalizar</button>
                     </div>
                     <div class="campo">
-                        <a href="#" class="perv-2">Volver</a>
+                        <a href="#" class="perv-2" (click)="atras2()">Volver</a>
                     </div>
                 </div>
             </form>

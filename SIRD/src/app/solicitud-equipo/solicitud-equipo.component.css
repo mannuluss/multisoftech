@@ -23,7 +23,6 @@
 
 .contenedor .boxform{
     width: 100%;
-    overflow: hidden;
 }
 
 .boxform form{
@@ -33,6 +32,18 @@
 
 .boxform form .page{
     width: 25%;
+}
+
+.boxform form .page1{
+  z-index: 0;
+}
+
+.boxform form .page2{
+  z-index: 1;  
+}
+
+.boxform form .page3{
+  z-index: 2;
 }
 
 .boxform form .page .titulo{
@@ -55,8 +66,8 @@
 }
 
 .boxform form .page .campo textarea{
-    position: absolute;
-    height: 100px;
+    position: relative;
+    height: 70px;
     width: 100%;
     font-weight: 500;
     border: 1px solid #37B09E;
@@ -71,6 +82,7 @@
     font-size: 18px;  
 }
 
+
 .boxform form .page .campo button{
     width: 100%;
     height: 40px;
@@ -79,6 +91,13 @@
     border: 4px solid #37B09E;
     font-size: 16px;
     color: #37B09E;
+    margin-top: 20px;
+}
+
+.boxform form .page .campo a{
+  font-size: 16px;
+  color: #37B09E;
+  margin-top: 20px;
 }
 
 .boxform form .page .campo button:hover{

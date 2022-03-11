@@ -4,24 +4,24 @@
         <input type="text" placeholder="Buscar">
         <button>Buscar</button>
     </div>
-    <div class="contenedor-card">
+    <div class="contenedor-card" *ng-for="let registro of registros">
         <div class="card">
             <div class="campo">
-                <label for="">Ref. 31432432</label>
+                <label for="">Ref. {{registro.numero}}</label>
             </div>
             <div class="campo">
                 <a href="#">Editar</a>
             </div>
             <div class="campo">
-                <label for="">Nombre: Juan</label>
+                <label for="">Nombre: {{registro.nombreUsuario}}</label>
             </div>        
             <div class="campo">
-                <label for="">Estado: .....</label>
+                <label for="">Estado: {{registro.estado}}</label>
             </div>
         </div>
     </div>
     <div class="agregar">
-        <button id="btnAgregar">
+        <button id="btnAgregar" (click)="agregar()">
             <img src="" alt="agregar">
         </button>
     </div>
