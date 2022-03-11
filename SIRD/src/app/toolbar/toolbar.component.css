@@ -6,3 +6,8 @@
     align-items: center;
     justify-content: center;
 }
+
+.toolbar img{
+    align-items: center;
+    width: 100px;
+}

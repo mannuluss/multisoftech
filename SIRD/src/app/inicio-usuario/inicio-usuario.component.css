@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor{
+    align-items: center;
+    display: inline;
+    justify-items: center;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+}
+
+.contenedor h2{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.contenedor .busqueda{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.contenedor .busqueda input{
+    height: 30px;
+    width: 300px;
+    border: 2px solid #37B09E;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 7px;
+}
+
+.contenedor .busqueda button{
+    height: 40px;
+    width: 100px;
+    border-radius: 30px;
+    border: 2px solid #37B09E;
+    background: white; 
+    color: #37B09E;
+}
+
+.contenedor .busqueda button:hover{
+    border: 2px solid white;
+    background: #37B09E; 
+    color: white;
+}
+
+.contenedor .contenedor-card{
+    position: relative;
+    width: 100%;
+    justify-items: left;
+    text-align: center;
+}
+
+.contenedor .contenedor-card .card{
+    height: 50px;
+    width: 400px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    border: 1px solid black;
+    display: inline-flex;
+}
+
+.contenedor .contenedor-card .card .campo{
+    margin: 5px;
+}
+
+.contenedor .agregar{
+    position: absolute;
+    bottom: 100px;
+    right: 100px;
+}
+
+.agregar button{
+    height: 80px;
+    width: 80px;
+    border-radius: 50px; 
+    border: 4px solid white;
+    background: #37B09E; 
+}
+
+.agregar button:hover{
+    height: 80px;
+    width: 80px;
+    border-radius: 50px; 
+    border: 4px solid #37B09E;
+    background: white; 
+}
