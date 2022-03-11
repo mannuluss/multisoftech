@@ -10,7 +10,12 @@ var authpassport = require("./auth")
 
 var app = express();
 
+function errorHandler(err, req, res, next) {
+    res.status(500);
+    res.send({ error: err });
+}
 
+app.use(errorHandler);
 app.use(logger('dev'));
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));

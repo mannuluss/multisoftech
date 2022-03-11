@@ -5,6 +5,14 @@ var passport = require('passport');
 const url = require('url');
 const { encryptPassword } = require('../src/auth');
 
+//obtener las solicitudes de un usuario o un tecnico
+router.get('/solicitudes', function (req, res, next) {
+    let role = req.body.role == "tecnico"? "Tecnico" : "Cliente";
+    connectionMYSQL.query(`CALL obtenerSolicitud${role}(${req.body.id})`, function (err, result) {
+        if (err) return next(err);
+        res.send(result[0])
+    });
+});
 
 //crear dispositivo en la lista de dispositivos
 router.post('/createDispositivo', function (req, res, next) {
@@ -18,9 +26,11 @@ router.post('/createDispositivo', function (req, res, next) {
 //crear solicitud
 router.post('/createSolicitud', function (req, res, next) {
     //consulta de los tecnicos para asignar al primero que este desocupado o tenga menos cosas por hacer
+    connectionMYSQL.query("SELECT * from personal");
     var idtecnico = 1
+    var state = 0 //estado inicial (en revision)
     //connectionMYSQL.ParamsProcedure(req.body, ["state","idcliente", "iddetalle", "idtecnico", "date"])
-    var paramsproperty = `"${req.body.state}","${req.body.idcliente}","${req.body.iddetalle}","${idtecnico}"`;
+    var paramsproperty = `"${state}","${req.body.idcliente}","${req.body.iddetalle}","${idtecnico}"`;
     connectionMYSQL.query(`CALL crearSolicitud(${paramsproperty})`, function (err, result) {
         if (err) throw err;
         res.send(result)

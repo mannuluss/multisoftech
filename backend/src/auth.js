@@ -12,15 +12,33 @@ function comparePassword(tocompare, password) {
     return bcrypt.compareSync(tocompare, password);
 };
 
+function searchRoleUser(email, func) {
+    connectionMYSQL.query(`SELECT * FROM cliente where email = "${email}";`, (err, result) => {
+        console.log(result)
+        if (result.length != 0)
+            return func("usuario", err, result)
+        else {
+            connectionMYSQL.query(`SELECT * FROM personal where email = "${email}";`, (err, res) => {
+                if (err) return func("err", err, res)
+                if (res.length != 0)
+                    return func("tecnico", err, res)
+                else
+                    return func("err", err, res)
+            })
+        }
+    });
+}
+
 function verify(req, email, password, cb) {
     //req.body.email
     //req.body.password
-    connectionMYSQL.query(`SELECT * FROM cliente where email = "${email}";`, (err, result) => {
-        if (err) return cb(err);
-        if (comparePassword(password, result[0].contrasena))
-            cb(null, { id: result[0].id_cliente, email: result[0].email, role: "admin" });
-        else return cb(null, { msj: 'Incorrect username or password.' });
-    })
+    searchRoleUser(email, (role, err, result) => {
+        if (err || role == "err") return cb(err);
+        if (comparePassword(password, result[0].contrasena)) {
+            let id = (role == "tecnico" ? result[0].id_personal:result[0].id_cliente)
+            cb(null, { id: id, email: result[0].email, role: role });
+        } else return cb(null, { msj: 'Incorrect username or password.' });
+    });
 }
 
 passport.use(new LocalStrategy({

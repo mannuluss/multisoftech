@@ -217,8 +217,26 @@ INSERT INTO dispositivo VALUES(Nsr, idClt, rfc, tDsp, rfc, fbct);
 END//
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE `obtenerSolicitudCliente`(
+	IN `idcliente` INT
+)
+BEGIN
+	SELECT s.id_solicitud, s.estado_solicitud, c.nombre AS cliente, d.descripcion AS detalle, p.nombre AS tecnico, s.fecha_solicitud
+	FROM solicitud s, cliente c, detalle d , personal p
+	WHERE s.id_cliente=idcliente AND c.id_cliente=s.id_cliente AND s.id_tecnico=p.id_personal
+	AND d.id_detalle=s.id_detalle;
+END//
+DELIMITER ;
 
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
+DELIMITER //
+CREATE PROCEDURE `obtenerSolicitudTecnico`(
+	IN `idtecnico` INT
+)
+BEGIN
+	SELECT s.id_solicitud, s.estado_solicitud, c.nombre AS cliente, d.descripcion AS detalle, p.nombre AS tecnico, s.fecha_solicitud
+	FROM solicitud s, cliente c, detalle d , personal p
+	WHERE s.id_tecnico=idtecnico AND c.id_cliente=s.id_cliente AND s.id_tecnico=p.id_personal
+	AND d.id_detalle=s.id_detalle;
+END//
+DELIMITER ;
