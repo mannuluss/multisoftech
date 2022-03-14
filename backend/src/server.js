@@ -40,7 +40,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/tecnico', tenicoRouter);
 
 //configurando rutas del servidor web
-app.get(["/tecnico", "/usuario", "/ususario/*"], (req, res) => {
+app.get(["/tecnico", "/usuario", "/ususario/registro", "/tecnico/registro"], (req, res) => {
     res.sendFile(path.join(__dirname, "../views/index.html"));
 });
 
