@@ -54,6 +54,7 @@
     width: 100%;
     justify-items: left;
     text-align: center;
+    display: flex;
 }
 
 .contenedor .contenedor-card .card{
@@ -63,7 +64,24 @@
     margin: 10px;
     border-radius: 15px;
     border: 1px solid black;
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor .contenedor-card .card[hidden]{
+    display: none;
+}
+
+.card .sup{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #37B09E;
+}
+.card .down{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .contenedor .contenedor-card .card .campo{
@@ -90,4 +108,8 @@
     border-radius: 50px; 
     border: 4px solid #37B09E;
     background: white; 
+}
+.agregar img{
+    width: 100%;
+    height: 100%;
 }

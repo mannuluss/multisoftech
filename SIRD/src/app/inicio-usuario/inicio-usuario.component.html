@@ -1,28 +1,25 @@
 <div class="contenedor">
     <h2>Registros Inscritos</h2>
     <div class="busqueda">
-        <input type="text" placeholder="Buscar">
-        <button>Buscar</button>
+        <input [(ngModel)]="busquedatext" (ngModelChange)="busquedatext = $event" [value]="busquedatext"
+        type="text" placeholder="Buscar">
+        <button (click)="Busqueda()">Buscar</button>
     </div>
     <div class="contenedor-card">
-        <div class="card">
-            <div class="campo">
-                <label for="">Ref. 31432432</label>
+        <div class="card" *ngFor="let item of lista" [hidden]="IsHiddenItem(item)">
+            <div class="sup">
+                <label for="">Ref. {{item.id_solicitud}}</label>
+                <a href="/usuario/registro">Editar</a>
             </div>
-            <div class="campo">
-                <a href="#">Editar</a>
-            </div>
-            <div class="campo">
-                <label for="">Nombre: Juan</label>
+            <div class="down">
+                <label for="">Tecnico: {{item.tecnico}}</label>
+                <label for="">Estado: {{item.estado_solicitud}}</label>
             </div>        
-            <div class="campo">
-                <label for="">Estado: .....</label>
-            </div>
         </div>
     </div>
     <div class="agregar">
-        <button id="btnAgregar">
-            <img src="" alt="agregar">
+        <button id="btnAgregar" (click)="btnAgregar()">
+            <img src="assets/mas-icono.png" alt="agregar">
         </button>
     </div>
 </div>

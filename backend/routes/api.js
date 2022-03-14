@@ -5,12 +5,22 @@ var passport = require('passport');
 const url = require('url');
 const { encryptPassword } = require('../src/auth');
 
+//crear detalles del dispositivo
+router.post('/createDetalle', function (req, res, next) {
+    var paramsproperty = `${req.body.idDispositivo},"${req.body.desc}",${req.body.idAccion}`;
+    connectionMYSQL.query(`CALL crearDetalle(${paramsproperty})`, function (err, result) {
+        if (err) return next(err);
+        res.send({ id: result[0][0].Identity })
+    });
+});
+
 //obtener las solicitudes de un usuario o un tecnico
 router.get('/solicitudes', function (req, res, next) {
-    let role = req.body.role == "tecnico"? "Tecnico" : "Cliente";
-    connectionMYSQL.query(`CALL obtenerSolicitud${role}(${req.body.id})`, function (err, result) {
+    let role = req.query.role == "tecnico" ? "Tecnico" : "Cliente";
+    connectionMYSQL.query(`CALL obtenerSolicitud${role}(${req.query.id})`, function (err, result) {
         if (err) return next(err);
-        res.send(result[0])
+        let resultado = result[0].map(value => { value.estado_solicitud = value.estado_solicitud == 0 ? "recibido" : "finalizado"; return value; })
+        res.send(resultado)
     });
 });
 
@@ -18,8 +28,8 @@ router.get('/solicitudes', function (req, res, next) {
 router.post('/createDispositivo', function (req, res, next) {
     var paramsproperty = `${req.body.nserie},${req.body.idcliente},"${req.body.specs}","${req.body.tipo_device}","${req.body.ref}","${req.body.maker}"`;
     connectionMYSQL.query(`CALL crearDispositivo(${paramsproperty})`, function (err, result) {
-        if (err) throw err;
-        res.send(result)
+        if (err) return next(err);
+        res.send({ id: result[0][0].Identity  })
     });
 });
 
@@ -32,8 +42,8 @@ router.post('/createSolicitud', function (req, res, next) {
     //connectionMYSQL.ParamsProcedure(req.body, ["state","idcliente", "iddetalle", "idtecnico", "date"])
     var paramsproperty = `"${state}","${req.body.idcliente}","${req.body.iddetalle}","${idtecnico}"`;
     connectionMYSQL.query(`CALL crearSolicitud(${paramsproperty})`, function (err, result) {
-        if (err) throw err;
-        res.send(result)
+        if (err) return next(err);
+        res.send({ id: result[0][0].Identity  })
     });
 });
 
@@ -61,7 +71,8 @@ router.post('/signup', (req, res) => {
 
 router.post('/logout', function (req, res, next) {
     //req.logout();
-    res.redirect('/');
+    res.send({ state: "ok" });
+    //res.redirect('/');
 });
 
 module.exports = router;

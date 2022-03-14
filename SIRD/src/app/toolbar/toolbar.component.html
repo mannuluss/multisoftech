@@ -1,3 +1,7 @@
 <div class="toolbar">
     <img src="../../assets/logotipo.png" alt="">
+    <div [class]="'baroptions'+(routerlink.url=='/'?'-hidden':'')">
+        <img class="avatar" src="assets/profile-man.png" (click)="setBarOpen()" >
+        <div (click)="logout()">Cerrar sesion</div>
+    </div>
 </div>

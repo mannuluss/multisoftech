@@ -173,7 +173,7 @@ CREATE PROCEDURE `crearCliente`(
 	IN `pssw` VARCHAR(250)
 )
 BEGIN
-	INSERT INTO cliente VALUES (nm,lstnm,ml,pssw);
+	INSERT INTO cliente(`nombre`, `apellido`, `email`, `contrasena`) VALUES (nm,lstnm,ml,pssw);
 END//
 DELIMITER ;
 
@@ -185,7 +185,8 @@ CREATE PROCEDURE `crearDetalle`(
 	IN `idcc` INT
 )
 BEGIN
-INSERT INTO  detalle VALUES (idDisp,idcc,descpDisp);
+INSERT INTO  detalle(`id_dispositivo`,`id_accion`,`descripcion`) VALUES (idDisp,idcc,descpDisp);
+SELECT @@IDENTITY AS 'Identity';
 END//
 DELIMITER ;
 
@@ -198,7 +199,8 @@ CREATE PROCEDURE `crearSolicitud`(
 	IN `idTc` INT
 )
 BEGIN
-INSERT INTO  solicitud VALUES (stSlct,idClnt,idDtll,idTc, SYSDATE());
+INSERT INTO  solicitud(`estado_solicitud`,`id_cliente`,`id_detalle`,`id_tecnico`,`fecha_solicitud`) VALUES (stSlct,idClnt,idDtll,idTc, SYSDATE());
+SELECT @@IDENTITY AS 'Identity';
 END//
 DELIMITER ;
 
@@ -214,6 +216,7 @@ CREATE PROCEDURE `crearDispositivo`(
 )
 BEGIN
 INSERT INTO dispositivo VALUES(Nsr, idClt, rfc, tDsp, rfc, fbct);
+SELECT @@IDENTITY AS 'Identity';
 END//
 DELIMITER ;
 

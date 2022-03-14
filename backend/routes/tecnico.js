@@ -2,14 +2,7 @@ var { Router } = require('express');
 var connectionMYSQL = require("../src/mysqlconfig");
 var router = Router();
 
-//crear detalles del dispositivo
-router.post('/createDetalles', function (req, res, next) {
-    var paramsproperty = `${req.body.idDispositivo},"${req.body.desc}",${req.body.idAccion}`;
-    connectionMYSQL.query(`CALL crearDetalle(${paramsproperty})`, function (err, result) {
-        if (err) throw err;
-        res.send(result)
-    });
-});
+
 
 
 //registro de lo accion echa en el dispositivo

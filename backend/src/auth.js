@@ -14,16 +14,15 @@ function comparePassword(tocompare, password) {
 
 function searchRoleUser(email, func) {
     connectionMYSQL.query(`SELECT * FROM cliente where email = "${email}";`, (err, result) => {
-        console.log(result)
         if (result.length != 0)
-            return func("usuario", err, result)
+            return func("usuario", err, result[0])
         else {
             connectionMYSQL.query(`SELECT * FROM personal where email = "${email}";`, (err, res) => {
                 if (err) return func("err", err, res)
                 if (res.length != 0)
-                    return func("tecnico", err, res)
+                    return func("tecnico", err, res[0])
                 else
-                    return func("err", err, res)
+                    return func("err", { msj: "Usuario no encontrado" }, res)
             })
         }
     });
@@ -33,10 +32,12 @@ function verify(req, email, password, cb) {
     //req.body.email
     //req.body.password
     searchRoleUser(email, (role, err, result) => {
-        if (err || role == "err") return cb(err);
-        if (comparePassword(password, result[0].contrasena)) {
-            let id = (role == "tecnico" ? result[0].id_personal:result[0].id_cliente)
-            cb(null, { id: id, email: result[0].email, role: role });
+        if (role == "err") return cb(null, err);
+        if (comparePassword(password, result.contrasena)) {
+            let id = (role == "tecnico" ? result.id_personal : result.id_cliente)
+            cb(null, {
+                id: id, email: result.email, role: role, name: (result.nombre + " " + result.apellido)
+            });
         } else return cb(null, { msj: 'Incorrect username or password.' });
     });
 }

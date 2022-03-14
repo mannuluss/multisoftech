@@ -5,15 +5,15 @@
     <div class="contenido">
         <div class="formulario">
             <img src="../../assets/logo.png" alt="logo">
-            <form action="">
+            <form [formGroup]="formulario">
                 <div class="formbox">
-                    <input type="text" placeholder="Usuario">
+                    <input type="text" placeholder="Email" formControlName="email">
                 </div>
                 <div class="formbox">
-                    <input type="text" placeholder="Contraseña">
+                    <input type="text" placeholder="Contraseña" formControlName="password">
                 </div>
                 <div class="formbox">
-                    <input class="boton" type="submit" value="Ingresar">
+                    <input class="boton" type="submit" value="Ingresar" (click)="sendlogin()">
                 </div>
                 <div class="formbox">
                     <a href="#">¿Has olvidado tu contraseña?</a>
