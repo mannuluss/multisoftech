@@ -1,5 +1,5 @@
 # multisoftech
-
+![](.readme/Diagrama1.png)
 # ANGULAR
 primer instalamos las dependencias de angular, estan se instalan globalmente
 ```
