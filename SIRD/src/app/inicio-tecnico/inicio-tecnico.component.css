@@ -8,7 +8,6 @@
     flex-direction: column;
     align-items: center;
     justify-items: center;
-    flex-wrap: wrap;
     height: 100%;
     width: 100%;
 }
@@ -66,7 +65,7 @@
     box-sizing: border-box; 
 }
 
-.contenedor .nuevos .button1{
+.button1{
     border: none;
     color: white;
     padding: 20px;
@@ -80,7 +79,7 @@
     background-color: #04AA6D;
 }
 
-.contenedor .nuevos .button2{
+.button2{
     border: none;
     color: white;
     padding: 20px;
@@ -170,6 +169,12 @@
 
 .dentro{
     margin: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+summary{
+    cursor: pointer;
 }
 
 .contenedor .finalizados{
@@ -238,4 +243,38 @@
 
 .agregar img:hover{
     filter: hue-rotate(165deg) saturate(86%) brightness(72%);
+}
+
+.panel{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.panel-left{
+    width: 50%;
+    text-align: left;
+}
+
+.panel-right{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+}
+
+.select{
+    border: 2px solid gray;
+    border-radius: 15px;
+}
+.dropdown{
+    position: absolute;
+    top:25px;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    border: 2px solid gray;
 }

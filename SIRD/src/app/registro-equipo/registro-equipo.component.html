@@ -1,25 +1,25 @@
 <div class="body">
     <div class="contenedor">
         <div class="boxform">
-            <form action="">
-                <div class="page page1" *ngIf="m1">
+            <form [formGroup]="formulario">
+                <div class="page page1">
                     <label class="titulo">Informe del equipo</label>
                     <div class="campo">
-                        <input type="text" placeholder="Titulo">
+                        <input type="text" placeholder="Titulo" formGroupName="title">
                     </div>
                     <p></p>
                     <div class="campo">
-                        <textarea name="descripcion" id="desc" cols="30" rows="10" placeholder="Descripción"></textarea>
+                        <textarea name="descripcion" id="desc" cols="30" rows="10" placeholder="Descripción" formGroupName="specs"></textarea>
                     </div>
                     <p></p>
                     <div class="campo">
-                        <input type="text" placeholder="Estado final">
+                        <input type="text" placeholder="Estado final" formGroupName="final">
                     </div>
                     <div class="campo">
-                        <button class="btn">Siguiente</button>
+                        <button class="btn" (click)="Send()">Siguiente</button>
                     </div>
                     <div class="campo">
-                        <a href="#">Cancelar</a>
+                        <a routerLink="/tecnico">Cancelar</a>
                     </div>
                 </div>
             </form>

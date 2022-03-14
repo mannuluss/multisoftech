@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
     password: new FormControl("")
   });
 
-  //@Output() getUserEvent = new EventEmitter<any>();
 
   constructor(private http: HttpClient,public routerlink: Router, private data: UserService) { }
 

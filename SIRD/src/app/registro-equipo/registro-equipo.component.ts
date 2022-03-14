@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,39 +10,19 @@ import { Router } from '@angular/router';
 })
 export class RegistroEquipoComponent implements OnInit {
 
-  public m1:boolean = true;
-  public m2:boolean = false;
-  public m3:boolean = false;
+  formulario = new FormGroup({
+    title: new FormControl(),
+    specs: new FormControl(),
+    final: new FormControl(),
+  })
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor(private http: HttpClient, public routerlink: Router){}
 
   ngOnInit(): void {
   }
 
-  cancelar(){
-    this.router.navigate(["/tecnico"]);
-  }
-
-  siguiente1(){
-     this.m1 = false;
-     this.m2 = true;
-  }
-
-  atras1(){
-    this.m1 = true;
-    this.m2 = false;
-  }
-
-  siguiente2(){
-    this.m2 = false;
-    this.m3 = true;
-  }
-
-  atras2(){
-    this.m2 = true;
-    this.m3 = false;
+  Send(){
+    this.routerlink.navigate(["/tecnico"])
   }
 
 }

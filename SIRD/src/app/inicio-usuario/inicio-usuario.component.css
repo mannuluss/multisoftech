@@ -56,6 +56,8 @@
     justify-items: left;
     text-align: center;
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .contenedor .contenedor-card .card{

@@ -19,7 +19,20 @@ router.get('/solicitudes', function (req, res, next) {
     let role = req.query.role == "tecnico" ? "Tecnico" : "Cliente";
     connectionMYSQL.query(`CALL obtenerSolicitud${role}(${req.query.id})`, function (err, result) {
         if (err) return next(err);
-        let resultado = result[0].map(value => { value.estado_solicitud = value.estado_solicitud == 0 ? "recibido" : "finalizado"; return value; })
+        let resultado = result[0].map(value => {
+            switch (value.estado_solicitud) {
+                case 0:
+                    value.estado_solicitud = "pendiente";
+                    break;
+                case 1:
+                    value.estado_solicitud = "recibido";
+                    break;
+                case 2:
+                    value.estado_solicitud = "finalizado";
+                    break;
+            }
+            return value;
+        })
         res.send(resultado)
     });
 });
@@ -29,7 +42,7 @@ router.post('/createDispositivo', function (req, res, next) {
     var paramsproperty = `${req.body.nserie},${req.body.idcliente},"${req.body.specs}","${req.body.tipo_device}","${req.body.ref}","${req.body.maker}"`;
     connectionMYSQL.query(`CALL crearDispositivo(${paramsproperty})`, function (err, result) {
         if (err) return next(err);
-        res.send({ id: result[0][0].Identity  })
+        res.send({ id: result[0][0].Identity })
     });
 });
 
@@ -43,7 +56,7 @@ router.post('/createSolicitud', function (req, res, next) {
     var paramsproperty = `"${state}","${req.body.idcliente}","${req.body.iddetalle}","${idtecnico}"`;
     connectionMYSQL.query(`CALL crearSolicitud(${paramsproperty})`, function (err, result) {
         if (err) return next(err);
-        res.send({ id: result[0][0].Identity  })
+        res.send({ id: result[0][0].Identity })
     });
 });
 

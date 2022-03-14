@@ -4,47 +4,74 @@
         <input type="text">
         <button class="buscar">Buscar</button>
     </div>
-    
+
     <div class="nuevos">
-    <details ontoggle="nuevos()">
-        <summary>Nuevos</summary>
-        <div class="dentro">
-        <p>Aquí va a traer lo que es la información del cliente con la referencia y el nombre</p>
-        <p></p>
-        <button class="button1">Aceptar</button>
-        <button class="button2">Rechazar</button>
-        </div>
+        <details (toggle)="setOpenDetails('nuevos')" [open]="active.nuevos">
+            <summary>Nuevos</summary>
+            <div class="dentro">
+                <div class="panel" *ngFor="let item of nuevos">
+                    <div class="panel-left">
+                        <p>Ref {{item.id_solicitud}}</p>
+                        <p>Cliente: {{item.cliente}}</p>
+                    </div>
+
+                    <div>
+                        <button class="button1" (click)="AceptarNuevos(item.id_solicitud)">Aceptar</button>
+                        <button class="button2">Rechazar</button>
+                    </div>
+                </div>
+            </div>
         </details>
     </div>
 
     <div class="asignados">
-        <details ontoggle="asignados()">
+        <details (toggle)="setOpenDetails('asignados')" [open]="active.asignados">
             <summary>Asignados</summary>
             <div class="dentro">
-                <p> Ya asignado se coloca en default el boton de custom select</p>  
-                
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                <button class="button-cls">En proceso</button> 
-                <div class="dd-cls">                 
-                  <button class="button-cls-split">                 
-                        <i class="fa fa-angle-double-down"></i>                 
-                  </button>                 
-                  <div class="dd-cont-cls">                 
-                    <a href="#">Finalizado</a>                                  
-                  </div>                 
+                <div class="panel" *ngFor="let item of asignados">
+                    <div class="panel-left">
+                        <p>Ref {{item.id_solicitud}}</p>
+                        <p>Cliente: {{item.cliente}}</p>
+                    </div>
+
+                    <div>
+                        <link rel="stylesheet"
+                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                        <p>Estado </p>
+                        <button class="button-cls">{{item.estado_solicitud}}</button>
+                        <div class="dd-cls">
+                            <button class="button-cls-split">
+                                <i class="fa fa-angle-double-down"></i>
+                            </button>
+                            <div class="dd-cont-cls">
+                                <a >En Proceso</a>
+                                <a (click)="setState(item.id_solicitud)">Finalizado</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-        
+
                 <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
             </div>
-            </details>
-        </div>
+        </details>
+    </div>
 
     <div class="finalizados">
-    <details ontoggle="finalizados()">
-        <summary>Finalizados</summary>
-        <div class="dentro">
-        <p>Definición de solucitudes finalizadas</p>
-        </div>
+        <details (toggle)="setOpenDetails('finalizados')" [open]="active.finalizados">
+            <summary>Finalizados</summary>
+            <div class="dentro">
+                <div class="panel" *ngFor="let item of finalizados">
+                    <div class="panel-left">
+                        <p>Ref {{item.id_solicitud}}</p>
+                        <p>Cliente: {{item.cliente}}</p>
+                    </div>
+
+                    <div class="panel-right">
+                        <p>Estado: {{item.estado_solicitud}}</p>
+                        <p>Fecha: {{item.fecha_solicitud}}</p>
+                    </div>
+                </div>
+            </div>
         </details>
     </div>
 </div>
