@@ -1,1 +1,50 @@
-<p>inicio-tecnico works!</p>
+<div class="contenedor">
+    <h2>Panel de Control</h2>
+    <div class="busqueda">
+        <input type="text">
+        <button class="buscar">Buscar</button>
+    </div>
+    
+    <div class="nuevos">
+    <details ontoggle="nuevos()">
+        <summary>Nuevos</summary>
+        <div class="dentro">
+        <p>Aquí va a traer lo que es la información del cliente con la referencia y el nombre</p>
+        <p></p>
+        <button class="button1">Aceptar</button>
+        <button class="button2">Rechazar</button>
+        </div>
+        </details>
+    </div>
+
+    <div class="asignados">
+        <details ontoggle="asignados()">
+            <summary>Asignados</summary>
+            <div class="dentro">
+                <p> Ya asignado se coloca en default el boton de custom select</p>  
+                
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <button class="button-cls">En proceso</button> 
+                <div class="dd-cls">                 
+                  <button class="button-cls-split">                 
+                        <i class="fa fa-angle-double-down"></i>                 
+                  </button>                 
+                  <div class="dd-cont-cls">                 
+                    <a href="#">Finalizado</a>                                  
+                  </div>                 
+                </div>
+        
+                <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
+            </div>
+            </details>
+        </div>
+
+    <div class="finalizados">
+    <details ontoggle="finalizados()">
+        <summary>Finalizados</summary>
+        <div class="dentro">
+        <p>Definición de solucitudes finalizadas</p>
+        </div>
+        </details>
+    </div>
+</div>

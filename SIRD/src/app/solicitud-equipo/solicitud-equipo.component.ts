@@ -154,4 +154,23 @@ prevBtnFourth.addEventListener("click", function(event){
 });
   */
 
+  siguiente1(){
+     this.m1 = false;
+     this.m2 = true;
+  }
+
+  atras1(){
+    this.m1 = true;
+    this.m2 = false;
+  }
+
+  siguiente2(){
+    this.m2 = false;
+    this.m3 = true;
+  }
+
+  atras2(){
+    this.m2 = true;
+    this.m3 = false;
+  }
 }
